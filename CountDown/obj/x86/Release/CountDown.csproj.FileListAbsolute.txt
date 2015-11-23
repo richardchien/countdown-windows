@@ -1,0 +1,20 @@
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Release\CountDown.exe.config
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Release\CountDown.exe
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Release\CountDown.pdb
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.DaysForm.resources
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.Properties.Resources.resources
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.SettingsForm.resources
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.csproj.GenerateResource.Cache
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.exe
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.pdb
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Release\CountDown.csprojResolveAssemblyReference.cache
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Release\CountDown.exe.config
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.exe
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.pdb
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Release\CountDown.exe
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Release\CountDown.pdb
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.csprojResolveAssemblyReference.cache
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.DaysForm.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.Properties.Resources.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.SettingsForm.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Release\CountDown.csproj.GenerateResource.Cache

@@ -1,0 +1,30 @@
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.exe.config
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.csprojResolveAssemblyReference.cache
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.Properties.Resources.resources
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.csproj.GenerateResource.Cache
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.exe
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.pdb
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.exe
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.pdb
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.DaysForm.resources
+C:\Users\Richard\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.SettingsForm.resources
+D:\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.exe.config
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.exe
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.pdb
+D:\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.exe
+D:\Dropbox\Projects\C#\CountDown\CountDown\bin\Debug\CountDown.pdb
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.csprojResolveAssemblyReference.cache
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.DaysForm.resources
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.Properties.Resources.resources
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.SettingsForm.resources
+D:\Dropbox\Projects\C#\CountDown\CountDown\obj\x86\Debug\CountDown.csproj.GenerateResource.Cache
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Debug\CountDown.exe.config
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.exe
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.pdb
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Debug\CountDown.exe
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\bin\Debug\CountDown.pdb
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.csprojResolveAssemblyReference.cache
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.DaysForm.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.Properties.Resources.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.SettingsForm.resources
+C:\Users\Richard Chien\Desktop\CountDown\CountDown\obj\x86\Debug\CountDown.csproj.GenerateResource.Cache
