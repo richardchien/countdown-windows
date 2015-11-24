@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using CountDown.Properties;
 using RC;
 
 namespace CountDown
@@ -18,31 +15,31 @@ namespace CountDown
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            Point loca = ((DaysForm)this.Owner).Location;
+            var loca = ((DaysForm) Owner).Location;
             loca.Y += 80;
-            this.Location = loca;
+            Location = loca;
         }
 
         private void SettingsForm_Shown(object sender, EventArgs e)
         {
-            this.dateTimePicker.Value = CountDown.Properties.Settings.Default.DestDate;
-            this.textBox.Text = CountDown.Properties.Settings.Default.Text;
-            this.autoStartCheck.Checked = StartupRegistry.HasSetStartup("CountDown");
-            this.topMostCheck.Checked = CountDown.Properties.Settings.Default.TopMost;
+            dateTimePicker.Value = Settings.Default.DestDate;
+            textBox.Text = Settings.Default.Text;
+            autoStartCheck.Checked = StartupRegistry.HasSetStartup("CountDown");
+            topMostCheck.Checked = Settings.Default.TopMost;
         }
 
         #region Handle Settings Change
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            CountDown.Properties.Settings.Default.DestDate = this.dateTimePicker.Value;
-            CountDown.Properties.Settings.Default.Save();
-            ((DaysForm)this.Owner).checkLeftDays();
+            Settings.Default.DestDate = dateTimePicker.Value;
+            Settings.Default.Save();
+            ((DaysForm) Owner).checkLeftDays();
         }
 
         private void autoStartCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.autoStartCheck.Checked)
+            if (autoStartCheck.Checked)
             {
                 StartupRegistry.SetStartup("CountDown");
             }
@@ -54,69 +51,69 @@ namespace CountDown
 
         private void topMostCheck_CheckedChanged(object sender, EventArgs e)
         {
-            ((DaysForm)this.Owner).TopMost = this.topMostCheck.Checked;
-            CountDown.Properties.Settings.Default.TopMost = this.topMostCheck.Checked;
-            CountDown.Properties.Settings.Default.Save();
+            ((DaysForm) Owner).TopMost = topMostCheck.Checked;
+            Settings.Default.TopMost = topMostCheck.Checked;
+            Settings.Default.Save();
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            ((DaysForm)this.Owner).setLocateLabel(this.textBox.Text);
-            CountDown.Properties.Settings.Default.Text = this.textBox.Text;
-            CountDown.Properties.Settings.Default.Save();
+            ((DaysForm) Owner).setLocateLabel(textBox.Text);
+            Settings.Default.Text = textBox.Text;
+            Settings.Default.Save();
         }
 
         #region Color Change
 
         private void changeTextColorBtn_Click(object sender, EventArgs e)
         {
-            this.colorDialog.Color = CountDown.Properties.Settings.Default.TextColor;
-            this.colorDialog.ShowDialog();
-            ((DaysForm)this.Owner).setTextColor(this.colorDialog.Color);
-            CountDown.Properties.Settings.Default.TextColor = this.colorDialog.Color;
-            CountDown.Properties.Settings.Default.Save();
+            colorDialog.Color = Settings.Default.TextColor;
+            colorDialog.ShowDialog();
+            ((DaysForm) Owner).setTextColor(colorDialog.Color);
+            Settings.Default.TextColor = colorDialog.Color;
+            Settings.Default.Save();
         }
 
         private void changeRectColorBtn_Click(object sender, EventArgs e)
         {
-            this.colorDialog.Color = CountDown.Properties.Settings.Default.RectColor;
-            this.colorDialog.ShowDialog();
-            ((DaysForm)this.Owner).setRectColor(this.colorDialog.Color);
-            CountDown.Properties.Settings.Default.RectColor = this.colorDialog.Color;
-            CountDown.Properties.Settings.Default.Save();
+            colorDialog.Color = Settings.Default.RectColor;
+            colorDialog.ShowDialog();
+            ((DaysForm) Owner).setRectColor(colorDialog.Color);
+            Settings.Default.RectColor = colorDialog.Color;
+            Settings.Default.Save();
         }
 
         private void changeDaysColorBtn_Click(object sender, EventArgs e)
         {
-            this.colorDialog.Color = CountDown.Properties.Settings.Default.DaysColor;
-            this.colorDialog.ShowDialog();
-            ((DaysForm)this.Owner).setDaysColor(this.colorDialog.Color);
-            CountDown.Properties.Settings.Default.DaysColor = this.colorDialog.Color;
-            CountDown.Properties.Settings.Default.Save();
+            colorDialog.Color = Settings.Default.DaysColor;
+            colorDialog.ShowDialog();
+            ((DaysForm) Owner).setDaysColor(colorDialog.Color);
+            Settings.Default.DaysColor = colorDialog.Color;
+            Settings.Default.Save();
 
             adjustTransparencyKeyToAdaptToNewColors();
         }
 
         private void adjustTransparencyKeyToAdaptToNewColors()
         {
-            Color rectC = CountDown.Properties.Settings.Default.RectColor;
-            Color daysC = CountDown.Properties.Settings.Default.DaysColor;
+            var rectC = Settings.Default.RectColor;
+            var daysC = Settings.Default.DaysColor;
             int r = daysC.R;
             int g = daysC.G;
             int b = daysC.B;
             r += r < 255 ? 1 : -1;
             g += g < 255 ? 1 : -1;
             b += b < 255 ? 1 : -1;
-            Color tranKey = Color.FromArgb(r, g, b);
+            var tranKey = Color.FromArgb(r, g, b);
             if (tranKey.Equals(rectC))
             {
                 r += r < 255 ? 1 : -1;
                 tranKey = Color.FromArgb(r, g, b);
             }
-            ((DaysForm)this.Owner).TransparencyKey = tranKey;
-            ((DaysForm)this.Owner).BackColor = tranKey;
-            CountDown.Properties.Settings.Default.TransparencyKey = tranKey;
-            CountDown.Properties.Settings.Default.Save();
+            ((DaysForm) Owner).TransparencyKey = tranKey;
+            ((DaysForm) Owner).BackColor = tranKey;
+            Settings.Default.TransparencyKey = tranKey;
+            Settings.Default.Save();
         }
 
         #endregion

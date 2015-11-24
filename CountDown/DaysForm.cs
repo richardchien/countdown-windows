@@ -1,83 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using CountDown.Properties;
 
 namespace CountDown
 {
     public partial class DaysForm : Form
     {
+        private SettingsForm settingsForm;
+
         public DaysForm()
         {
             InitializeComponent();
         }
 
-        SettingsForm settingsForm;
-
         private void Days_Load(object sender, EventArgs e)
         {
-            this.checkLeftDaysThread = new Thread(checkLeftDaysLoop);
-            this.checkLeftDaysThread.IsBackground = true;
-            this.checkLeftDaysThread.Start();
+            checkLeftDaysThread = new Thread(checkLeftDaysLoop);
+            checkLeftDaysThread.IsBackground = true;
+            checkLeftDaysThread.Start();
 
-            this.Location = CountDown.Properties.Settings.Default.WindowLocation;
+            Location = Settings.Default.WindowLocation;
 
-            string picPath = CountDown.Properties.Settings.Default.AvatarPath;
+            var picPath = Settings.Default.AvatarPath;
             if (File.Exists(picPath))
             {
-                this.pictureBox.ImageLocation = picPath;
-                this.locateLabel.Visible = false;
+                pictureBox.ImageLocation = picPath;
+                locateLabel.Visible = false;
             }
 
-            this.locateLabel.Text = CountDown.Properties.Settings.Default.Text;
+            locateLabel.Text = Settings.Default.Text;
 
-            this.locateLabel.BackColor = CountDown.Properties.Settings.Default.RectColor;
-            this.locateLabel.ForeColor = CountDown.Properties.Settings.Default.TextColor;
-            this.leftDaysLabel.ForeColor = CountDown.Properties.Settings.Default.DaysColor;
-            this.TransparencyKey = CountDown.Properties.Settings.Default.TransparencyKey;
-            this.BackColor = CountDown.Properties.Settings.Default.TransparencyKey;
+            locateLabel.BackColor = Settings.Default.RectColor;
+            locateLabel.ForeColor = Settings.Default.TextColor;
+            leftDaysLabel.ForeColor = Settings.Default.DaysColor;
+            TransparencyKey = Settings.Default.TransparencyKey;
+            BackColor = Settings.Default.TransparencyKey;
 
-            this.TopMost = CountDown.Properties.Settings.Default.TopMost;
+            TopMost = Settings.Default.TopMost;
         }
 
         #region View Setter
 
         public void setTextColor(Color c)
         {
-            this.locateLabel.ForeColor = c;
+            locateLabel.ForeColor = c;
         }
 
         public void setRectColor(Color c)
         {
-            this.locateLabel.BackColor = c;
+            locateLabel.BackColor = c;
         }
 
         public void setDaysColor(Color c)
         {
-            this.leftDaysLabel.ForeColor = c;
+            leftDaysLabel.ForeColor = c;
         }
 
         public void setLocateLabel(string str)
         {
-            this.locateLabel.Text = str;
+            locateLabel.Text = str;
         }
 
         private delegate void setLeftDaysLabelDelegate(string str);
+
         private void setLeftDaysLabel(string str)
         {
-            if (this.leftDaysLabel.InvokeRequired)
+            if (leftDaysLabel.InvokeRequired)
             {
                 setLeftDaysLabelDelegate d = setLeftDaysLabel;
-                this.leftDaysLabel.Invoke(d, str);
+                leftDaysLabel.Invoke(d, str);
             }
             else
             {
-                this.leftDaysLabel.Text = str;
+                leftDaysLabel.Text = str;
             }
         }
 
@@ -85,16 +84,18 @@ namespace CountDown
 
         #region Check Left Days (Main Function)
 
-        Thread checkLeftDaysThread = null;
+        private Thread checkLeftDaysThread;
 
         public void checkLeftDays()
         {
-            DateTime destDate = CountDown.Properties.Settings.Default.DestDate;
-            DateTime nowDate = DateTime.Now;
-            double destDateOA = destDate.ToOADate();
-            double nowDateOA = nowDate.ToOADate();
-            double leftTimeOA = destDateOA - nowDateOA;
-            setLeftDaysLabel((leftTimeOA - (double)(int)leftTimeOA >= 0.0 ? ((int)leftTimeOA + 1).ToString() : ((int)leftTimeOA).ToString()) + "天");
+            var destDate = Settings.Default.DestDate;
+            var nowDate = DateTime.Now;
+            var destDateOA = destDate.ToOADate();
+            var nowDateOA = nowDate.ToOADate();
+            var leftTimeOA = destDateOA - nowDateOA;
+            setLeftDaysLabel((leftTimeOA - (double) (int) leftTimeOA >= 0.0
+                ? ((int) leftTimeOA + 1).ToString()
+                : ((int) leftTimeOA).ToString()) + "天");
         }
 
         private void checkLeftDaysLoop()
@@ -110,14 +111,14 @@ namespace CountDown
 
         #region Handle Mouse Drag to Move
 
-        private bool mousePressingLeft = false;
+        private bool mousePressingLeft;
         private Point mouseLocation;
 
         private void handleMouseDrag()
         {
             // 在MouseMove事件中调用此方法
-            Point mouseSet = Control.MousePosition;
-            mouseSet.Offset(mouseLocation.X, mouseLocation.Y);  //设置移动后的位置
+            var mouseSet = MousePosition;
+            mouseSet.Offset(mouseLocation.X, mouseLocation.Y); //设置移动后的位置
             Location = mouseSet;
         }
 
@@ -127,9 +128,9 @@ namespace CountDown
             // 若为左键则记录
             if (e.Button == MouseButtons.Left)
             {
-                this.mousePressingLeft = true;
+                mousePressingLeft = true;
                 // 获取鼠标按下时位置
-                this.mouseLocation = new Point(-e.X, -e.Y);
+                mouseLocation = new Point(-e.X, -e.Y);
             }
         }
 
@@ -149,9 +150,9 @@ namespace CountDown
         private void Days_MouseUp(object sender, MouseEventArgs e)
         {
             Console.WriteLine("MouseUp");
-            CountDown.Properties.Settings.Default.WindowLocation = this.Location;
-            CountDown.Properties.Settings.Default.Save();
-            this.mousePressingLeft = false;
+            Settings.Default.WindowLocation = Location;
+            Settings.Default.Save();
+            mousePressingLeft = false;
         }
 
         #endregion
@@ -160,11 +161,11 @@ namespace CountDown
 
         private void SettingsMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.settingsForm == null || this.settingsForm.IsDisposed)
+            if (settingsForm == null || settingsForm.IsDisposed)
             {
-                this.settingsForm = new SettingsForm();
-                this.settingsForm.Owner = this;
-                this.settingsForm.Show();
+                settingsForm = new SettingsForm();
+                settingsForm.Owner = this;
+                settingsForm.Show();
             }
         }
 
@@ -184,35 +185,34 @@ namespace CountDown
 
         private void locateLabel_DragDrop(object sender, DragEventArgs e)
         {
-            Array files = e.Data.GetData(DataFormats.FileDrop) as Array;
-            List<string> picPaths = new List<string>();
+            var files = e.Data.GetData(DataFormats.FileDrop) as Array;
+            var picPaths = new List<string>();
             foreach (string file in files)
             {
-                string extension = Path.GetExtension(file).ToLower().Substring(1);
+                var extension = Path.GetExtension(file).ToLower().Substring(1);
                 if (extension == "png" || extension == "jpg" || extension == "jpeg")
                     picPaths.Add(file);
             }
 
             if (picPaths.Count > 0)
             {
-                this.pictureBox.ImageLocation = picPaths[0];
-                CountDown.Properties.Settings.Default.AvatarPath = picPaths[0];
-                CountDown.Properties.Settings.Default.Save();
+                pictureBox.ImageLocation = picPaths[0];
+                Settings.Default.AvatarPath = picPaths[0];
+                Settings.Default.Save();
 
-                this.locateLabel.Visible = false;
+                locateLabel.Visible = false;
             }
         }
 
         private void locateLabel_DoubleClick(object sender, EventArgs e)
         {
-            this.pictureBox.ImageLocation = "";
-            CountDown.Properties.Settings.Default.AvatarPath = "";
-            CountDown.Properties.Settings.Default.Save();
+            pictureBox.ImageLocation = "";
+            Settings.Default.AvatarPath = "";
+            Settings.Default.Save();
 
-            this.locateLabel.Visible = true;
+            locateLabel.Visible = true;
         }
 
         #endregion
-
     }
 }

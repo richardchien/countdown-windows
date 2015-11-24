@@ -1,26 +1,27 @@
-﻿using Microsoft.Win32;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace RC
 {
     /// <summary>
-    /// 设置/取消开机启动的类
+    ///     设置/取消开机启动的类
     /// </summary>
-    class StartupRegistry
+    internal class StartupRegistry
     {
         private const string kRegistryAutoRunPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
+
         /// <summary>
-        /// 检测是否已经设置了开机启动
+        ///     检测是否已经设置了开机启动
         /// </summary>
         /// <returns>是否已设置开机启动</returns>
         public static bool HasSetStartup(string autoRunKey)
         {
-            bool isExist = false;
+            var isExist = false;
 
-            RegistryKey runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
-            string[] subkeyNames = runKey.GetValueNames();
+            var runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
+            var subkeyNames = runKey.GetValueNames();
 
-            foreach (string keyName in subkeyNames)
+            foreach (var keyName in subkeyNames)
             {
                 if (keyName == autoRunKey)
                 {
@@ -30,22 +31,21 @@ namespace RC
             }
 
             runKey.Close();
-            runKey = null;
 
             return isExist;
         }
 
         /// <summary>
-        /// 设置开机启动
+        ///     设置开机启动
         /// </summary>
         /// <returns>是否设置成功</returns>
         public static bool SetStartup(string autoRunKey)
         {
             if (!HasSetStartup(autoRunKey))
             {
-                bool hasSucceeded = false;
-                string exePath = Application.ExecutablePath;
-                RegistryKey runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
+                var hasSucceeded = false;
+                var exePath = Application.ExecutablePath;
+                var runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
 
                 try
                 {
@@ -59,25 +59,23 @@ namespace RC
                 finally
                 {
                     runKey.Close();
-                    runKey = null;
                 }
 
                 return hasSucceeded;
             }
-            else
-                return true;
+            return true;
         }
 
         /// <summary>
-        /// 取消开机启动
+        ///     取消开机启动
         /// </summary>
         /// <returns>取消是否成功</returns>
         public static bool UnsetStartup(string autoRunKey)
         {
             if (HasSetStartup(autoRunKey))
             {
-                bool hasSucceeded = false;
-                RegistryKey runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
+                var hasSucceeded = false;
+                var runKey = Registry.CurrentUser.OpenSubKey(kRegistryAutoRunPath, true);
 
                 try
                 {
@@ -91,13 +89,11 @@ namespace RC
                 finally
                 {
                     runKey.Close();
-                    runKey = null;
                 }
 
                 return hasSucceeded;
             }
-            else
-                return true;
+            return true;
         }
     }
 }
